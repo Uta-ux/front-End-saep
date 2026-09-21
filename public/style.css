@@ -1,0 +1,1029 @@
+/* ==========================================================
+   RESET & FONTES
+   ========================================================== */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonte/unzipped/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonte/unzipped/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonte/unzipped/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonte/unzipped/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --color-white: #FFFFFF;
+  --color-green: #1B3C29;
+  --color-gold: #F6A823;
+  --color-gray-light: #F4F6F5;
+  --color-gray-border: #D1D5DB;
+  --color-text-dark: #222222;
+  --color-error: #E53935;
+  --font-family-main: 'Poppins', sans-serif;
+  --transition-fast: 0.25s ease;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-gray-light);
+  color: var(--color-text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: var(--font-family-main);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+input {
+  font-family: var(--font-family-main);
+}
+
+/* ==========================================================
+   1. CABEÇALHO (HEADER)
+   ========================================================== */
+.app-header {
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-gray-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 1.1 Seção Usuário */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.user-avatar-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-green);
+  flex-shrink: 0;
+  background-color: #E2E8F0;
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.user-handle {
+  font-weight: 600;
+  color: var(--color-green);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.btn-perfil {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 7px 16px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--color-green);
+}
+
+.btn-perfil:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(40%);
+}
+
+.btn-perfil:not(:disabled):hover {
+  background-color: #12281b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(27, 60, 41, 0.25);
+}
+
+/* 1.2 Seção Empresa */
+.company-section {
+  text-align: center;
+  flex: 1;
+}
+
+.company-logo {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-green);
+  letter-spacing: -0.5px;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.company-logo:hover {
+  transform: scale(1.02);
+}
+
+/* 1.3 Seção Login/Logout */
+.auth-section {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.btn-auth {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 8px 24px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--color-green);
+}
+
+.btn-auth:hover {
+  background-color: #12281b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(27, 60, 41, 0.25);
+}
+
+/* ==========================================================
+   CONTEÚDO PRINCIPAL (MAIN)
+   ========================================================== */
+.main-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px 64px 24px;
+  flex: 1;
+}
+
+/* 2.1 Campo de Busca */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-green);
+  border-radius: 30px;
+  padding: 4px 16px;
+  box-shadow: 0 4px 12px rgba(27, 60, 41, 0.08);
+  transition: box-shadow var(--transition-fast);
+}
+
+.search-box:focus-within {
+  box-shadow: 0 6px 18px rgba(27, 60, 41, 0.18);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  background: transparent;
+}
+
+.search-box input::placeholder {
+  color: #8C9B92;
+}
+
+.btn-search {
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-lupa {
+  width: 22px;
+  height: 22px;
+  filter: invert(18%) sepia(26%) saturate(1376%) hue-rotate(94deg) brightness(94%) contrast(92%);
+}
+
+.search-feedback {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-error);
+  min-height: 20px;
+  text-align: center;
+}
+
+/* Mural Header */
+.mural-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.btn-reset-filter {
+  background-color: transparent;
+  color: var(--color-green);
+  border: 1px solid var(--color-green);
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-reset-filter:hover {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+/* ==========================================================
+   2.2 MURAL DE RECEITAS (3 COLUNAS)
+   ========================================================== */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Card de Receita */
+.recipe-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(27, 60, 41, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Container de Imagem com Tooltip */
+.recipe-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 68%; /* Aspect Ratio 16:11 */
+  overflow: hidden;
+  background-color: #E2E8F0;
+  cursor: pointer;
+}
+
+.recipe-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.recipe-card:hover .recipe-image {
+  transform: scale(1.05);
+}
+
+/* Tooltip no Hover da Imagem */
+.recipe-tooltip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(27, 60, 41, 0.95) 0%, rgba(27, 60, 41, 0.85) 80%, transparent 100%);
+  color: var(--color-white);
+  padding: 16px 14px 12px 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recipe-card:hover .recipe-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tooltip-author {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.tooltip-origin {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #E2E8F0;
+}
+
+/* Informações do Card */
+.recipe-info {
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-white);
+}
+
+.recipe-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-green);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 75%;
+}
+
+/* Contador e Botão de Favorito */
+.recipe-favorite-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.recipe-favorite-action:hover {
+  background-color: rgba(246, 168, 35, 0.12);
+}
+
+.star-icon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s ease;
+}
+
+.recipe-favorite-action:hover .star-icon {
+  transform: scale(1.15);
+}
+
+/* Estrela Desfavoritada: Cor Verde #1B3C29 */
+.star-icon.unfavorited {
+  filter: invert(18%) sepia(26%) saturate(1376%) hue-rotate(94deg) brightness(94%) contrast(92%);
+}
+
+/* Estrela Favoritada: Cor Amarela #F6A823 */
+.star-icon.favorited {
+  filter: invert(72%) sepia(87%) saturate(1067%) hue-rotate(352deg) brightness(101%) contrast(96%);
+}
+
+.favorite-count {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-green);
+}
+
+/* Feedback de Busca Vazia */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  color: #64748B;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================
+   MENU LATERAL (DRAWER) DO CHEF
+   ========================================================== */
+.sidebar-chef {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  background-color: var(--color-white);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-chef.active {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-gray-border);
+}
+
+.sidebar-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.btn-close-sidebar {
+  background: transparent;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-close {
+  width: 22px;
+  height: 22px;
+}
+
+.sidebar-content {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex: 1;
+}
+
+.chef-profile-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-green);
+  margin-bottom: 12px;
+}
+
+.sidebar-chef-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-green);
+}
+
+.sidebar-chef-handle {
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+/* Estatísticas do Chef */
+.chef-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+  background-color: var(--color-gray-light);
+  padding: 16px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-gray-border);
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #555555;
+}
+
+/* Botão Suas Receitas: Destacado com bordas superior e inferior */
+.sidebar-actions {
+  margin-top: 10px;
+}
+
+.btn-suas-receitas {
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-green);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: center;
+  border-top: 2px solid var(--color-green);
+  border-bottom: 2px solid var(--color-green);
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  transition: all var(--transition-fast);
+}
+
+.btn-suas-receitas:hover {
+  background-color: rgba(27, 60, 41, 0.08);
+  color: #12281b;
+  letter-spacing: 0.5px;
+}
+
+/* Backdrop escuro */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================
+   TELA GESTÃO DE RECEITAS DO CHEF ("SUAS RECEITAS")
+   ========================================================== */
+.view-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.btn-voltar-mural {
+  background-color: transparent;
+  color: var(--color-green);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius-sm);
+}
+
+.btn-voltar-mural:hover {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.card-form-cadastro {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-gray-border);
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-green);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-green);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--color-gray-border);
+  border-radius: var(--border-radius-sm);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--color-green);
+}
+
+.form-control.is-invalid {
+  border-color: var(--color-error);
+}
+
+.error-feedback {
+  font-size: 0.8rem;
+  color: var(--color-error);
+  margin-top: 4px;
+  font-weight: 500;
+  min-height: 18px;
+}
+
+/* Upload de arquivo customizado */
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.btn-file-trigger {
+  display: inline-block;
+  background-color: var(--color-white);
+  color: var(--color-green);
+  border: 1.5px solid var(--color-green);
+  padding: 8px 18px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-file-trigger:hover {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.file-name-display {
+  font-size: 0.88rem;
+  color: #64748B;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btn-cadastrar {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 10px 28px;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-cadastrar:hover {
+  background-color: #12281b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(27, 60, 41, 0.25);
+}
+
+/* Lista de Receitas do Chef */
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-green);
+  margin-bottom: 20px;
+}
+
+.chef-recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.chef-recipe-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-gray-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.chef-recipe-card .recipe-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 65%;
+  background-color: #E2E8F0;
+}
+
+.chef-recipe-footer {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chef-recipe-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-green);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 80%;
+}
+
+.btn-delete-recipe {
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn-delete-recipe:hover {
+  background-color: rgba(246, 168, 35, 0.15);
+  transform: scale(1.1);
+}
+
+/* Ícone de Lixeira na cor #F6A823 */
+.icon-lixeira {
+  width: 22px;
+  height: 22px;
+  filter: invert(72%) sepia(87%) saturate(1067%) hue-rotate(352deg) brightness(101%) contrast(96%);
+}
+
+/* ==========================================================
+   3. RODAPÉ (FOOTER)
+   ========================================================== */
+.app-footer {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  margin-top: auto;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left .footer-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.footer-center {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+}
+
+/* Ícones sociais em branco */
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-right .footer-copy {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* ==========================================================
+   MODAL DE LOGIN
+   ========================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-20px);
+  transition: transform 0.25s ease;
+  overflow: hidden;
+}
+
+.modal-overlay.active .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-header {
+  position: relative;
+  padding: 22px 24px 16px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-gray-border);
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-modal-close {
+  width: 22px;
+  height: 22px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.login-general-error {
+  min-height: 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-cancelar {
+  background-color: transparent;
+  color: var(--color-green);
+  border: 1.5px solid var(--color-green);
+  padding: 9px 20px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.btn-cancelar:hover {
+  background-color: rgba(27, 60, 41, 0.08);
+}
+
+.btn-submit-login {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: 1.5px solid var(--color-green);
+  padding: 9px 24px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.btn-submit-login:hover {
+  background-color: #12281b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(27, 60, 41, 0.25);
+}
+
+/* ==========================================================
+   RESPONSIVIDADE
+   ========================================================== */
+@media (max-width: 900px) {
+  .recipes-grid,
+  .chef-recipes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .company-section {
+    order: -1;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .recipes-grid,
+  .chef-recipes-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
